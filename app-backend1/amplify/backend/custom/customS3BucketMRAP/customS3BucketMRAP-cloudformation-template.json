@@ -1,0 +1,153 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "env": {
+      "Type": "String"
+    },
+    "apiappbackend1GraphQLAPIIdOutput": {
+      "Type": "String",
+      "Description": "Input parameter describing GraphQLAPIIdOutput attribute for api/appbackend1 resource"
+    },
+    "apiappbackend1GraphQLAPIEndpointOutput": {
+      "Type": "String",
+      "Description": "Input parameter describing GraphQLAPIEndpointOutput attribute for api/appbackend1 resource"
+    }
+  },
+  "Resources": {
+    "IAMRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": {
+          "Fn::Sub": [
+            "s3-crr-ampmrap-${varApiID}-${varEnv}-${varRegion}",
+            {
+              "varApiID": {
+                "Ref": "apiappbackend1GraphQLAPIIdOutput"
+              },
+              "varEnv": {
+                "Ref": "env"
+              },
+              "varRegion": {
+                "Ref": "AWS::Region"
+              }
+            }
+          ]
+        },
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "sts:AssumeRole"
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "s3.amazonaws.com"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "Policies": [
+          {
+            "PolicyName": "s3-crossregion-replication",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:ListBucket",
+                    "s3:ReplicateObject",
+                    "s3:ReplicateDelete",
+                    "s3:ReplicateTags",
+                    "s3:ObjectOwnerOverrideToBucketOwner",
+                    "s3:GetReplicationConfiguration",
+                    "s3:GetObjectVersionForReplication",
+                    "s3:GetObjectVersionAcl",
+                    "s3:GetObjectVersionTagging",
+                    "s3:GetObjectRetention",
+                    "s3:GetObjectLegalHold"
+                  ],
+                  "Resource": [
+                    "{{resolve:ssm:/amplify/backend1/s3mraparn/primary}}",
+                    "{{resolve:ssm:/amplify/backend1/s3mraparn/primary}}/*",
+                    "{{resolve:ssm:/amplify/backend1/s3mraparn/secondary}}",
+                    "{{resolve:ssm:/amplify/backend1/s3mraparn/secondary}}/*"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "S3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": {
+          "Fn::Sub": [
+            "275727400916-ampmrap-${varApiID}-${varEnv}-${varRegion}",
+            {
+              "varApiID": {
+                "Ref": "apiappbackend1GraphQLAPIIdOutput"
+              },
+              "varEnv": {
+                "Ref": "env"
+              },
+              "varRegion": {
+                "Ref": "AWS::Region"
+              }
+            }
+          ]
+        },
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+              }
+            }
+          ]
+        },
+        "VersioningConfiguration": {
+          "Status": "Enabled"
+        },
+        "ReplicationConfiguration": {
+          "Role": {
+            "Fn::GetAtt": [ "IAMRole", "Arn" ]
+          },
+          "Rules": [
+            {
+              "DeleteMarkerReplication": {
+                "Status": "Enabled"
+              },
+              "Destination": {
+                "Bucket": "{{resolve:ssm:/amplify/backend1/s3mraparn/secondary}}",
+                "Metrics": {
+                  "Status": "Enabled",
+                  "EventThreshold": {
+                    "Minutes": 15
+                  }
+                },
+                "ReplicationTime": {
+                  "Status": "Enabled",
+                  "Time": {
+                    "Minutes": 15
+                  }
+                }
+              },
+              "Filter": {},
+              "Id": "CrossRegionReplication",
+              "Priority": 1,
+              "Status": "Enabled"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {},
+  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.11.1\",\"stackType\":\"custom-customCloudformation\",\"metadata\":{}}"
+}

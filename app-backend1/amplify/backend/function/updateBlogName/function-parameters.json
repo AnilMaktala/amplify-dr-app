@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "api": {
+      "appbackend1": [
+        "Mutation"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

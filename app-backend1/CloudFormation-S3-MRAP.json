@@ -1,0 +1,21 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+  },
+  "Resources": {
+    "S3MRAP": {
+      "Type" : "AWS::S3::MultiRegionAccessPoint",
+      "Properties" : {
+          "Name" : "amplify-mrap",
+          "Regions" : [
+            {
+              "Bucket" : "275727400916-ampmrap-ippm2vv63bc4fgvcrlylyiwnre-dev-us-east-1"
+            },
+            {
+              "Bucket": "275727400916-ampmrap-yasooyt2cng4fijx2ikjiiex7u-devdr-us-west-2"
+            }
+          ]
+        }      
+    }
+  }
+}
