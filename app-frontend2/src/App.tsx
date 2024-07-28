@@ -46,9 +46,11 @@ function App() {
           break;
         case "signInWithRedirect_failure":
           setError("An error has occurred during the Oauth flow.");
+          console.log(error);
           break;
         case "customOAuthState":
           setCustomState(payload.data);
+          console.log(customState);
           break;
       }
     });
