@@ -46,46 +46,21 @@ async function authConfig () {
 
 Amplify.configure({
   // us-east-1
-  // API: {
-  //   GraphQL: {
-  //     endpoint: 'https://5kza6neu7zfrna3waryy2zweqy.appsync-api.us-east-1.amazonaws.com/graphql',
-  //     region: 'us-east-1',
-  //     defaultAuthMode: 'apiKey',
-  //     apiKey: 'da2-gvfgx7ulyjdobaikgxspszls3m'
-  //   }
-  // },
-  // Auth: {
-  //   Cognito: {
-  //     userPoolClientId: '4edtg3mjoou726phfp01mu6hi6',
-  //     userPoolId: 'us-east-1_cQuOLforN',
-  //     loginWith: {
-  //       oauth: {
-  //         domain: 'amplify2.auth.us-east-1.amazoncognito.com',
-  //         scopes: ['aws.cognito.signin.user.admin', 'openid', 'email', 'profile', 'phone'],
-  //         redirectSignIn: ['http://localhost:5173'],
-  //         redirectSignOut: ['http://localhost:5173'],
-  //         responseType: 'code'
-  //       },
-  //       email: true
-  //     }
-  //   }
-  // }
-  // us-west-2
   API: {
     GraphQL: {
-      endpoint: 'https://jzg4e5ikznbplcoryhmyrprggu.appsync-api.us-west-2.amazonaws.com/graphql',
-      region: 'us-west-2',
+      endpoint: 'https://5kza6neu7zfrna3waryy2zweqy.appsync-api.us-east-1.amazonaws.com/graphql',
+      region: 'us-east-1',
       defaultAuthMode: 'apiKey',
-      apiKey: 'da2-eapk5vufkjczvczusz5k7pvgp4'
+      apiKey: 'da2-gvfgx7ulyjdobaikgxspszls3m'
     }
   },
   Auth: {
     Cognito: {
-      userPoolClientId: '6gfim0bp1fmnk1g41hs3h61age',
-      userPoolId: 'us-west-2_d3fc0CaKg',
+      userPoolClientId: '4edtg3mjoou726phfp01mu6hi6',
+      userPoolId: 'us-east-1_cQuOLforN',
       loginWith: {
         oauth: {
-          domain: 'amplify2dr.auth.us-west-2.amazoncognito.com',
+          domain: 'amplify2.auth.us-east-1.amazoncognito.com',
           scopes: ['aws.cognito.signin.user.admin', 'openid', 'email', 'profile', 'phone'],
           redirectSignIn: ['http://localhost:5173'],
           redirectSignOut: ['http://localhost:5173'],
@@ -95,6 +70,31 @@ Amplify.configure({
       }
     }
   }
+  // us-west-2
+  // API: {
+  //   GraphQL: {
+  //     endpoint: 'https://jzg4e5ikznbplcoryhmyrprggu.appsync-api.us-west-2.amazonaws.com/graphql',
+  //     region: 'us-west-2',
+  //     defaultAuthMode: 'apiKey',
+  //     apiKey: 'da2-eapk5vufkjczvczusz5k7pvgp4'
+  //   }
+  // },
+  // Auth: {
+  //   Cognito: {
+  //     userPoolClientId: '6gfim0bp1fmnk1g41hs3h61age',
+  //     userPoolId: 'us-west-2_d3fc0CaKg',
+  //     loginWith: {
+  //       oauth: {
+  //         domain: 'amplify2dr.auth.us-west-2.amazoncognito.com',
+  //         scopes: ['aws.cognito.signin.user.admin', 'openid', 'email', 'profile', 'phone'],
+  //         redirectSignIn: ['http://localhost:5173'],
+  //         redirectSignOut: ['http://localhost:5173'],
+  //         responseType: 'code'
+  //       },
+  //       email: true
+  //     }
+  //   }
+  // }
 });
 
 //const client = generateClient();

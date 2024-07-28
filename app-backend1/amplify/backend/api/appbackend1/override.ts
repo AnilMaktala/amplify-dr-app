@@ -3,15 +3,31 @@ import { AmplifyApiGraphQlResourceStackTemplate, AmplifyProjectInfo } from '@aws
 export function override(resources: AmplifyApiGraphQlResourceStackTemplate, amplifyProjectInfo: AmplifyProjectInfo) {
     const denaliEnv = "dev"
     let callbackUrl = ""
+    let openSearchInstanceCount;
+    let openSearchZoneAwarenessEnabled;
+    let openSearchInstanceType;
     if (denaliEnv === "dev") {
         console.log("Env is dev")
         callbackUrl = "http://localhost:8080"
+        openSearchInstanceCount = 3;
+        openSearchZoneAwarenessEnabled = true;
+        openSearchInstanceType = "t3.medium.elasticsearch"
     }
     else if (denaliEnv === "devdr") {
         console.log("Env is devdr")
     }
     else {
         console.log("Env not set, setting default values")
+    }
+
+    resources.opensearch.OpenSearchDomain.elasticsearchClusterConfig = {
+        ...resources.opensearch.OpenSearchDomain.elasticsearchClusterConfig,
+        instanceCount: openSearchInstanceCount,
+        instanceType: openSearchInstanceType,
+        zoneAwarenessConfig: {
+            availabilityZoneCount: openSearchInstanceCount
+        },
+        zoneAwarenessEnabled: openSearchZoneAwarenessEnabled
     }
 
     function configureAppSyncDataSource (globalTableName: string, modelName: string, region: string, accountId: string) {
