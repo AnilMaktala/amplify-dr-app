@@ -35,15 +35,15 @@ export class CdkApiConfigStack extends cdk.Stack {
     //     sourceApis: [
     //       {
     //         sourceApi: appsync.GraphqlApi.fromGraphqlApiAttributes(this, 'appbackend1-dev', {
-    //           graphqlApiId: 'ippm2vv63bc4fgvcrlylyiwnre',
-    //           graphqlApiArn: 'arn:aws:appsync:us-east-1:275727400916:apis/ippm2vv63bc4fgvcrlylyiwnre'
+    //           graphqlApiId: 'xxxx',
+    //           graphqlApiArn: 'arn:aws:appsync:us-east-1:xxxxx:apis/xxxx'
     //         }),
     //         mergeType: appsync.MergeType.MANUAL_MERGE,
     //       },
     //       {
     //         sourceApi: appsync.GraphqlApi.fromGraphqlApiAttributes(this, 'appbackend2-dev', {
-    //           graphqlApiId: 'u4v2c6x3knhapbab4y2a6zchta',
-    //           graphqlApiArn: 'arn:aws:appsync:us-east-1:275727400916:apis/u4v2c6x3knhapbab4y2a6zchta'
+    //           graphqlApiId: 'xxxx',
+    //           graphqlApiArn: 'arn:aws:appsync:us-east-1:xxxxx:apis/xxxx'
     //         }),
     //         mergeType: appsync.MergeType.MANUAL_MERGE,
     //       }
@@ -63,15 +63,15 @@ export class CdkApiConfigStack extends cdk.Stack {
         sourceApis: [
           {
             sourceApi: appsync.GraphqlApi.fromGraphqlApiAttributes(this, 'appbackend1-devdr', {
-              graphqlApiId: 'yasooyt2cng4fijx2ikjiiex7u',
-              graphqlApiArn: 'arn:aws:appsync:us-west-2:275727400916:apis/yasooyt2cng4fijx2ikjiiex7u'
+              graphqlApiId: 'xxxx',
+              graphqlApiArn: 'arn:aws:appsync:us-west-2:xxxxx:apis/xxxx'
             }),
             mergeType: appsync.MergeType.MANUAL_MERGE,
           },
           {
             sourceApi: appsync.GraphqlApi.fromGraphqlApiAttributes(this, 'appbackend2-devdr', {
-              graphqlApiId: '3jhudnbh3rhspfbi7qtv7vvq24',
-              graphqlApiArn: 'arn:aws:appsync:us-west-2:275727400916:apis/3jhudnbh3rhspfbi7qtv7vvq24'
+              graphqlApiId: 'xxx',
+              graphqlApiArn: 'arn:aws:appsync:us-west-2:xxx:apis/xxx'
             }),
             mergeType: appsync.MergeType.MANUAL_MERGE,
           }
