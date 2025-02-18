@@ -100,7 +100,7 @@ export function override(resources: AmplifyApiGraphQlResourceStackTemplate, ampl
     }
 
     // Config for both regions
-    const varAccountId = '275727400916';
+    const varAccountId = 'xxxx';
     
     // Config for us-east-1 only
     const varRegion = 'us-east-1';
