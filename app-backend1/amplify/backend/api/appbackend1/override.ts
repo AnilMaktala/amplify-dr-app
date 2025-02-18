@@ -105,16 +105,16 @@ export function override(resources: AmplifyApiGraphQlResourceStackTemplate, ampl
     // Config for us-east-1 only
     const varRegion = 'us-east-1';
     const osDomainName = "amplify-opense-ph9909zznpti";
-    configureOpenSearchModel('Blog', 'arn:aws:dynamodb:us-east-1:275727400916:table/Blog-GlobalTable-AzureADB2C-2/stream/2024-06-21T21:16:46.898');
-    configureOpenSearchModel('Post', 'arn:aws:dynamodb:us-east-1:275727400916:table/Post-GlobalTable/stream/2024-07-05T19:04:17.503');
+    configureOpenSearchModel('Blog', 'arn:aws:dynamodb:us-east-1:xxx:table/Blog-GlobalTable-AzureADB2C-2/stream/2024-06-21T21:16:46.898');
+    configureOpenSearchModel('Post', 'arn:aws:dynamodb:us-east-1:xxxx:table/Post-GlobalTable/stream/2024-07-05T19:04:17.503');
     
     // Config for us-west-2 only
     // const varRegion = 'us-west-2';
     // const osDomainName = "amplify-opense-1s42kiy2cu3ha";
-    // configureOpenSearchModel('Blog', 'arn:aws:dynamodb:us-west-2:275727400916:table/Blog-GlobalTable-AzureADB2C-2/stream/2024-06-21T21:22:53.188');
-    // configureOpenSearchModel('Post', 'arn:aws:dynamodb:us-west-2:275727400916:table/Post-GlobalTable/stream/2024-07-05T19:10:38.869');
+    // configureOpenSearchModel('Blog', 'arn:aws:dynamodb:us-west-2:xxx:table/Blog-GlobalTable-AzureADB2C-2/stream/2024-06-21T21:22:53.188');
+    // configureOpenSearchModel('Post', 'arn:aws:dynamodb:us-west-2:xxx:table/Post-GlobalTable/stream/2024-07-05T19:10:38.869');
     // configureAppSyncDataSource('User2-ippm2vv63bc4fgvcrlylyiwnre-dev', 'User2', varRegion, varAccountId);
-    // configureOpenSearchModel('User2', 'arn:aws:dynamodb:us-west-2:275727400916:table/User2-ippm2vv63bc4fgvcrlylyiwnre-dev/stream/2024-07-11T17:24:15.358');
+    // configureOpenSearchModel('User2', 'arn:aws:dynamodb:us-west-2:xxx:table/User2-ippm2vv63bc4fgvcrlylyiwnre-dev/stream/2024-07-11T17:24:15.358');
         
     // Config for both regions - AppSync Data Source
     configureAppSyncDataSource('Blog-GlobalTable-AzureADB2C-2', 'Blog', varRegion, varAccountId);
